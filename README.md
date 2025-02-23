@@ -1,4 +1,4 @@
-# flipr2025 | 📰 Live News Scraper & Summarizer  
+# 📰 Live News Scraper & Summarizer  
 
 ## 🚀 Overview  
 
