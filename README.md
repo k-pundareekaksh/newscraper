@@ -1,6 +1,4 @@
-# flipr2025
-
-# 📰 Live News Scraper & Summarizer  
+# flipr2025 | 📰 Live News Scraper & Summarizer  
 
 ## 🚀 Overview  
 
@@ -28,25 +26,24 @@
 
 ### 🔹 1️⃣ Clone the Repository  
 
-git clone https://github.com/your-username/news-scraper.git
-cd news-scraper
+- git clone [https://github.com/k-pundareekaksh/flipr2025.git](https://github.com/k-pundareekaksh/flipr2025.git)
 
 ### 🔹 2️⃣ Install Dependencies
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
-🔹 3️⃣ Run the Streamlit App
+### 🔹 3️⃣ Run the Streamlit App
 
-streamlit run app.py
+- streamlit run app.py
 
 
 ---
 
 🔍 Usage
-1️⃣ Enter a category (state, city, or topic).
-2️⃣ Select a subcategory (if available).
-3️⃣ Click "Go!" to fetch, summarize, and display news articles.
-4️⃣ View Hindi translation by expanding the section.
+- 1️⃣ Enter a category (state, city, or topic).
+- 2️⃣ Select a subcategory (if available).
+- 3️⃣ Click "Go!" to fetch, summarize, and display news articles.
+- 4️⃣ View Hindi translation by expanding the section.
 
 
 ---
@@ -67,8 +64,8 @@ news-scraper/
 
 🙌 Contributions are welcome!
 
-1️⃣ Fork the repository.
-2️⃣ Create a new branch (git checkout -b feature-xyz).
-3️⃣ Commit changes (git commit -m "Added new feature").
-4️⃣ Push to GitHub (git push origin feature-xyz).
-5️⃣ Open a Pull Request! 🚀
+- 1️⃣ Fork the repository.
+- 2️⃣ Create a new branch (git checkout -b feature-xyz).
+- 3️⃣ Commit changes (git commit -m "Added new feature").
+- 4️⃣ Push to GitHub (git push origin feature-xyz).
+- 5️⃣ Open a Pull Request! 🚀
