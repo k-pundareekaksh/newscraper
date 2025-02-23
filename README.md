@@ -48,20 +48,6 @@
 
 ---
 
-🏗️ Project Structure
-
-news-scraper/
-│── scraper.py              # Web scraping logic
-│── summarizer.py           # AI-powered summarization
-│── app.py                  # Streamlit UI
-│── requirements.txt        # Python dependencies
-│── urls.json               # Stores scraped URLs
-│── processed_articles.json # Stores summarized news
-│── README.md               # Project documentation
-
-
----
-
 🙌 Contributions are welcome!
 
 - 1️⃣ Fork the repository.
