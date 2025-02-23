@@ -57,7 +57,7 @@ SPECIAL_CATEGORIES = {
 
 
 st.sidebar.markdown('<p class="sidebar-title">Select News Category:</p>', unsafe_allow_html=True)
-category = st.sidebar.text_input("Enter state, city, or topic", "")
+category = st.sidebar.text_input("Enter state, city, or topic (world, business, sports, entertainment, lifestyle or technology)", "")
 selected_subcategory = None
 
 if category:
