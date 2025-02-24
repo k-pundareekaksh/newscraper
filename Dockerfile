@@ -1,14 +1,10 @@
-# Use an official Python runtime as a base image
-FROM python:3.9
+# Use the official Python 3.12 base image
+FROM python:3.12
 
 # Set the working directory
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-# Install Chrome & ChromeDriver
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -16,15 +12,23 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     google-chrome-stable
 
-# Download & set up ChromeDriver
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip \
-    && unzip /tmp/chromedriver.zip -d /usr/local/bin/
+# Download & install ChromeDriver
+RUN CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
+    wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip && \
+    unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
+    rm /tmp/chromedriver.zip
 
-# Copy app files
+# Copy the application files
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copy all project files
 COPY . .
 
 # Expose Streamlit default port
 EXPOSE 8501
 
-# Start the Streamlit app
-CMD streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+# Start the Streamlit app using start.sh
+CMD ["bash", "start.sh"]
