@@ -1,7 +1,5 @@
 # 📰 Live News Scraper & Summarizer  
 
----
-
 🚀 Demo: [https://newscraper.streamlit.app](https://newscraper.streamlit.app)
 
 **Live News Scraper & Summarizer** is an AI-powered tool that:  
