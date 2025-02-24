@@ -1,5 +1,3 @@
-#ppp
-
 import streamlit as st
 import subprocess
 import json
