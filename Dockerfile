@@ -1,7 +1,10 @@
-# Use official Python image
+# Use official Python 3.12 image
 FROM python:3.12-slim
 
-# Install system dependencies (without google-chrome-stable)
+# Set environment variables to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -26,22 +29,26 @@ RUN apt-get update && apt-get install -y \
     libcups2 \
     && rm -rf /var/lib/apt/lists/*
 
-# Manually install Google Chrome (stable version)
+# Install Google Chrome
 RUN wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /tmp/chrome.deb \
     && apt-get update && apt-get install -y ./tmp/chrome.deb \
     && rm /tmp/chrome.deb
 
-# Install ChromeDriver (fixed version)
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip \
-    && unzip /tmp/chromedriver.zip -d /usr/local/bin/ \
-    && chmod +x /usr/local/bin/chromedriver \
-    && rm /tmp/chromedriver.zip
+# Install ChromeDriver
+RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1) && \
+    wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")/chromedriver_linux64.zip && \
+    unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
+    chmod +x /usr/local/bin/chromedriver && \
+    rm /tmp/chromedriver.zip
 
 # Set working directory
 WORKDIR /app
 
 # Copy application files
 COPY . .
+
+# Upgrade pip before installing dependencies
+RUN pip install --no-cache-dir --upgrade pip
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
