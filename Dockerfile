@@ -1,7 +1,7 @@
 # Use official Python image
 FROM python:3.12-slim
 
-# Install system dependencies
+# Install system dependencies (without google-chrome-stable)
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -24,9 +24,14 @@ RUN apt-get update && apt-get install -y \
     libpango-1.0-0 \
     libatk1.0-0 \
     libcups2 \
-    google-chrome-stable
+    && rm -rf /var/lib/apt/lists/*
 
-# Install ChromeDriver manually (fixed version)
+# Manually install Google Chrome (stable version)
+RUN wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /tmp/chrome.deb \
+    && apt-get update && apt-get install -y ./tmp/chrome.deb \
+    && rm /tmp/chrome.deb
+
+# Install ChromeDriver (fixed version)
 RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip -d /usr/local/bin/ \
     && chmod +x /usr/local/bin/chromedriver \
