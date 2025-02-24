@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# Install Google Chrome
-if ! command -v google-chrome-stable &> /dev/null
-then
-    echo "Installing Google Chrome..."
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-    sudo apt update
-    sudo apt install -y google-chrome-stable
-fi
+# Install Google Chrome (without sudo)
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt-get update && apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-# Run Streamlit app
-streamlit run app.py
+# Install ChromeDriver
+CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+wget https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+chmod +x chromedriver
+mv chromedriver /usr/local/bin/
+
+# Start the Streamlit app on the correct port
+streamlit run app.py --server.port 10000 --server.address 0.0.0.0
