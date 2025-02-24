@@ -1,9 +1,8 @@
 # 📰 Live News Scraper & Summarizer  
 
 ---
-### 🚀 Live Demo: [https://newscraper.streamlit.app](newscraper.streamlit.app)
 
----
+🚀 Demo: [https://newscraper.streamlit.app](https://newscraper.streamlit.app)
 
 **Live News Scraper & Summarizer** is an AI-powered tool that:  
 ✔️ Scrapes real-time news from **Times of India**.  
