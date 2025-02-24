@@ -19,10 +19,10 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearm
 RUN google-chrome --version
 
 # Set ChromeDriver version
-ENV CHROMEDRIVER_VERSION=114.0.5735.16
+ENV CHROMEDRIVER_VERSION=114.0.5735.90
 
-# Install ChromeDriver (matching version)
-RUN wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip" && \
+# Download ChromeDriver from Selenium's official storage
+RUN wget -O /tmp/chromedriver.zip "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip" && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
     chmod +x /usr/local/bin/chromedriver && \
     rm /tmp/chromedriver.zip
