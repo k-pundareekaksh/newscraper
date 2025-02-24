@@ -4,7 +4,6 @@ sentencepiece==0.2.0
 regex==2024.11.6
 protobuf==5.29.3
 tqdm==4.67.1
-chromium-browser
 streamlit
 selenium
 webdriver-manager
