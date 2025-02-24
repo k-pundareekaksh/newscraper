@@ -5,7 +5,6 @@ import time
 import os
 import sys
 
-
 st.set_page_config(page_title="Live News Scraper", page_icon="📰", layout="wide")
 
 
@@ -57,7 +56,7 @@ SPECIAL_CATEGORIES = {
 
 
 st.sidebar.markdown('<p class="sidebar-title">Select News Category:</p>', unsafe_allow_html=True)
-category = st.sidebar.text_input("Enter state, city, or topic (world, business, sports, entertainment, lifestyle or technology)", "")
+category = st.sidebar.text_input("Enter state, city, or topic", "")
 selected_subcategory = None
 
 if category:
