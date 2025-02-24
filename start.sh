@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Install Google Chrome (without sudo)
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt-get update && apt-get install -y ./google-chrome-stable_current_amd64.deb
+# Download and extract Google Chrome binary (No sudo required)
+mkdir -p /opt/google/chrome
+wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /opt/google/chrome/google-chrome.deb
 
-# Install ChromeDriver
-CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-wget https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+# Install ChromeDriver (Hardcoded latest version to avoid 404 errors)
+CHROMEDRIVER_VERSION=124.0.6367.0
+wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 unzip chromedriver_linux64.zip
 chmod +x chromedriver
 mv chromedriver /usr/local/bin/
 
-# Start the Streamlit app on the correct port
+# Run Streamlit app on Render (use port 10000 to avoid Render conflicts)
 streamlit run app.py --server.port 10000 --server.address 0.0.0.0
