@@ -27,20 +27,37 @@ st.markdown('<p class="big-title">Live News Scraper & Summarizer 📰</p>', unsa
 st.markdown('<p class="sub-text">Get the latest news with summarized content and Hindi translation!</p>', unsafe_allow_html=True)
 
 CATEGORY_MAPPING = {
-    "Uttar Pradesh": ["Lucknow", "Kanpur", "Meerut", "Prayagraj", "Noida", "Ghaziabad", "Agra", "Varanasi"],
-    "Maharashtra": ["Mumbai", "Pune", "Navi Mumbai", "Nagpur", "Nashik", "Aurangabad", "Thane"],
-    "Karnataka": ["Bengaluru", "Mysuru", "Mangaluru", "Hubballi"],
-    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem"],
+    "Maharashtra": ["Mumbai", "Pune", "Navi Mumbai", "Nagpur", "Nashik", "Thane", "Kolhapur", "Mumbai Region"],
+    "Delhi": ["Delhi"],
+    "Karnataka": ["Bangalore", "Mysuru", "Mangaluru", "Hubballi"],
+    "Telangana": ["Hyderabad"],
     "West Bengal": ["Kolkata"],
-    "Delhi": [],
-    "Punjab": ["Amritsar", "Ludhiana", "Chandigarh"],
+    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", "Erode"],
+    "Uttar Pradesh": ["Lucknow", "Kanpur", "Meerut", "Allahabad", "Noida", "Ghaziabad", "Agra", "Varanasi", "Bareilly"],
+    "Punjab": ["Amritsar", "Ludhiana"],
     "Haryana": ["Faridabad", "Gurgaon"],
     "Bihar": ["Patna"],
     "Assam": ["Guwahati"],
-    "Kerala": [], "Goa": [], "Manipur": [], "Mizoram": [], "Tripura": [], "Nagaland": [], "Sikkim": [],
-    "Arunachal Pradesh": [], "Meghalaya": [], "Chhattisgarh": [], "Jharkhand": [], "Uttarakhand": [],
-    "Odisha": [], "Himachal Pradesh": [], "Ladakh": [], "Jammu and Kashmir": [], "Andaman and Nicobar": [],
+    "Kerala": ["Kozhikode", "Kochi", "Thiruvananthapuram"],
+    "Goa": ["Goa"],
+    "Manipur": ["Imphal"],
+    "Tripura": ["Agartala"],
+    "Nagaland": ["Kohima"],
+    "Arunachal Pradesh": ["Itanagar"],
+    "Meghalaya": ["Shillong"],
+    "Chhattisgarh": ["Raipur"],
+    "Jharkhand": ["Ranchi", "Jamshedpur"],
+    "Uttarakhand": ["Dehradun"],
+    "Odisha": ["Cuttack", "Bhubaneswar"],
+    "Himachal Pradesh": ["Shimla"],
+    "Jammu and Kashmir": ["Jammu", "Srinagar"],
+    "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur"],
+    "Gujarat": ["Ahmedabad", "Vadodara", "Rajkot"],
+    "Madhya Pradesh": ["Bhopal", "Indore"],
+    "Chandigarh": ["Chandigarh"],
+    "Puducherry": ["Puducherry"]
 }
+
 
 SPECIAL_CATEGORIES = {
     "World": ["US", "UK", "Pakistan", "Europe", "China", "Middle East", "Rest of World"],
