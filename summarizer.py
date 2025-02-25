@@ -27,6 +27,7 @@ def summarize_text(text):
     summary_ids = model_summ.generate(inputs, max_length=150, num_beams=4, length_penalty=1.0, no_repeat_ngram_size=2, early_stopping=True)
     return tokenizer_summ.decode(summary_ids[0], skip_special_tokens=True)
 
+
 def translate_text(text):
     """Translate English text to Hindi using M2M100."""
     tokenizer_trans.src_lang = "en"
@@ -35,26 +36,21 @@ def translate_text(text):
     translated_text = tokenizer_trans.decode(output_tokens[0], skip_special_tokens=True)
     return translated_text.replace(".", "।")  # Replace full stop with Hindi "Poorn Viram"
 
-# POST PROCESSING THE OUTPUT:
+#POST PROCESSING THE OUTPUT:
 def fix_punctuation(text):
     # Capitalize the first letter of each sentence
     text = re.sub(r"([.!?]\s+)([a-z])", lambda p: p.group(1) + p.group(2).upper(), text)
     # Capitalize the very first letter if needed
-    text = text[0].upper() + text[1:] if text else ""
+    text = text[0].upper() + text[1:]
     return text
+
+
 
 def process_json(input_file, output_file):
     """Load, process, and save the JSON file."""
-    try:
-        with open(input_file, "r", encoding="utf-8") as f:
-            articles = json.load(f)
-    except FileNotFoundError:
-        print(f"❌ Error: '{input_file}' file not found.")
-        return
-    except json.JSONDecodeError:
-        print(f"❌ Error: Invalid JSON format in '{input_file}'.")
-        return
-
+    with open(input_file, "r", encoding="utf-8") as f:
+        articles = json.load(f)
+    
     for article in articles:
         content = article.get("content", "")
         if content:
