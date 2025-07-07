@@ -1,4 +1,4 @@
-# 📰 Live News Scraper & Summarizer  
+# 📰 Live News Scraper & Summarizer - Developed as a part of Flipr 25 Hackathon
 
 🚀 Demo: [https://newscraper.streamlit.app](https://newscraper.streamlit.app)
 
